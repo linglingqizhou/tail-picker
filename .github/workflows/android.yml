@@ -65,7 +65,7 @@ jobs:
           buildozer -v android debug
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tailpicker-apk
           path: mobile/bin/*.apk
