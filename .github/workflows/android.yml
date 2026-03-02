@@ -25,8 +25,8 @@ jobs:
           cd mobile
           # 创建符号链接到 src 目录
           ln -s ../src .
-          # 打包 debug 版本
-          buildozer -v android debug
+          # 打包 debug 版本 (使用 -y 自动确认 root 提示)
+          buildozer -y -v android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
