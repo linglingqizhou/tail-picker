@@ -14,6 +14,8 @@ jobs:
       image: kivy/buildozer:latest
       env:
         BUILDOZER_ALLOW_ROOT: 1
+        ANDROID_HOME: /root/.buildozer/android/platform/android-sdk
+        ANDROID_SDK_ROOT: /root/.buildozer/android/platform/android-sdk
 
     steps:
       - name: Checkout code
@@ -21,12 +23,15 @@ jobs:
 
       - name: Accept Android licenses
         run: |
-          mkdir -p $ANDROID_HOME/licenses
-          echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > $ANDROID_HOME/licenses/android-sdk-license
-          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> $ANDROID_HOME/licenses/android-sdk-license
-          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> $ANDROID_HOME/licenses/android-sdk-license
-          echo "84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-preview-license
-          echo "d975f751698a77b662f1254ddbeed3901e976f5a" >> $ANDROID_HOME/licenses/android-sdk-preview-license
+          echo "=== 设置许可证 ==="
+          mkdir -p /root/.buildozer/android/platform/android-sdk/licenses
+          echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+          echo "84831b9409646a918e30573bab4c9c91346d8abd" > /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-preview-license
+          echo "d975f751698a77b662f1254ddbeed3901e976f5a" >> /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-preview-license
+          ls -la /root/.buildozer/android/platform/android-sdk/licenses/
+          cat /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
 
       - name: Setup gradle
         uses: gradle/actions/setup-gradle@v3
