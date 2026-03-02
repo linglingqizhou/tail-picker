@@ -14,6 +14,7 @@ android.permissions = INTERNET,ACCESS_NETWORK_STATE,WRITE_EXTERNAL_STORAGE,READ_
 android.api = 31
 android.minapi = 21
 android.ndk = 23b
+android.sdk = 24
 android.skip_update = False
 android.accept_sdk_license = True
 android.entrypoint = org.kivy.android.PythonActivity

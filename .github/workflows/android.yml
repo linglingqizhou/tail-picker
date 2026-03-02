@@ -30,11 +30,22 @@ jobs:
           echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
           echo "84831b9409646a918e30573bab4c9c91346d8abd" > /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-preview-license
           echo "d975f751698a77b662f1254ddbeed3901e976f5a" >> /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-preview-license
+          echo "=== 许可证文件列表 ==="
           ls -la /root/.buildozer/android/platform/android-sdk/licenses/
+          echo "=== 许可证内容 ==="
           cat /root/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
 
       - name: Setup gradle
         uses: gradle/actions/setup-gradle@v3
+
+      - name: Pre-install Android SDK components
+        run: |
+          echo "=== 检查 SDK 目录 ==="
+          ls -la /root/.buildozer/android/platform/android-sdk/
+          echo "=== 检查 build-tools ==="
+          ls /root/.buildozer/android/platform/android-sdk/build-tools/ 2>/dev/null || echo "build-tools 目录不存在"
+          echo "=== 检查 cmdline-tools ==="
+          ls /root/.buildozer/android/platform/android-sdk/cmdline-tools/ 2>/dev/null || echo "cmdline-tools 目录不存在"
 
       - name: Build APK
         run: |
