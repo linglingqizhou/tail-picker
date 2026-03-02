@@ -2,23 +2,9 @@
 
 一个基于 AkShare 和新浪财经 API 的 A 股数据采集工具，支持实时行情、历史 K 线、资金流向、龙虎榜数据，以及多种选股策略。
 
-**新功能**: Android 手机 APP 版已发布，可在手机上随时选股！
-
 ---
 
 ## 快速开始
-
-### Android APP（新功能）
-
-手机安装 APP，随时随地选股：
-
-1. 下载 APK：[GitHub Releases](https://github.com/your-username/tail-picker/releases)
-2. 安装到手机
-3. 打开 APP，点击"开始选股"
-
-或自行打包：查看 [mobile/QUICKSTART.md](mobile/QUICKSTART.md)
-
-### 尾盘选股器（命令行）
 
 **一键运行**：
 ```bash
@@ -323,5 +309,5 @@ A: 可能是市场条件不符合策略要求，可适当放宽筛选条件。
 
 ---
 
-版本：3.1 (Android APP 版)
-最后更新：2026-03-02
+版本：3.1 (命令行版)
+最后更新：2026-03-03
