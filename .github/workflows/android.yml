@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: kivy/buildozer:latest
+      env:
+        BUILDOZER_ALLOW_ROOT: 1
 
     steps:
       - name: Checkout code
@@ -21,13 +23,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build APK
-        env:
-          BUILDOZER_ALLOW_ROOT: 1
         run: |
           cd mobile
-          # 创建符号链接到 src 目录
           ln -s ../src .
-          # 打包 debug 版本
           buildozer -v android debug
 
       - name: Upload APK
