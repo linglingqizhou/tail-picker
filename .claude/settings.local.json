@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(echo 直接用 pip install 测试:*)",
+      "WebFetch(domain:akshare.akfamily.xyz)",
+      "WebSearch",
+      "Bash(cd:*)",
+      "Bash(head:*)",
+      "Bash(cd \"D:/cursor/A\" && python -c \"\nfrom src.sina_api import SinaStockAPI\napi = SinaStockAPI\\(\\)\n# 测试获取少量股票\nsymbols = ['sh600519', 'sz000001', 'sz000858', 'sh601318', 'sz300750']\ndf = api.get_batch_realtime\\(symbols\\)\nprint\\(df\\)\n\" 2>&1)",
+      "Bash(cd \"D:/cursor/A\" && python -c \"\nimport pandas as pd\nfrom pathlib import Path\n\n# 检查是否有缓存\ncache_file = Path\\('stock_data/cache/stocks_cache.csv'\\)\nif cache_file.exists\\(\\):\n    df = pd.read_csv\\(cache_file, encoding='utf-8-sig'\\)\n    print\\(f'缓存数据：{len\\(df\\)} 只股票'\\)\n    print\\(df.columns.tolist\\(\\)\\)\n    print\\(df.head\\(3\\)\\)\nelse:\n    print\\('无缓存数据'\\)\n\" 2>&1)"
+    ]
+  }
+}

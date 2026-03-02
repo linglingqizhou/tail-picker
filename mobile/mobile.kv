@@ -1,0 +1,33 @@
+#:kivy 2.1.0
+
+<StockItem>:
+    orientation: 'vertical'
+    padding: dp(10)
+    spacing: dp(5)
+    size_hint_y: None
+    height: dp(90)
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.95, 0.95, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: root.text if hasattr(root, 'text') else ''
+        font_size: dp(15)
+        size_hint_y: None
+        height: dp(80)
+        text_size: self.size
+        valign: 'middle'
+        halign: 'left'
+        padding: dp(5), dp(5)
+
+<HomeScreen>:
+    layout: layout
+
+<ResultScreen>:
+    rv: rv
+
+<SettingsScreen>:
+    layout: layout
