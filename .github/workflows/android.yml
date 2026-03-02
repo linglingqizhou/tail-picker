@@ -9,53 +9,16 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Build APK with Buildozer
+        uses: ArtemSBulgakov/buildozer-action@v1.2
         with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            python3-dev \
-            build-essential \
-            libsqlite3-dev \
-            libffi-dev \
-            libssl-dev \
-            openjdk-17-jdk \
-            autoconf \
-            automake \
-            libtool \
-            libncurses5 \
-          pip install --upgrade pip
-          pip install cython==3.0.8 buildozer python-for-android
-
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Accept Android licenses
-        run: |
-          sdkmanager --licenses <<< y || true
-          sdkmanager --licenses <<< y || true
-
-      - name: Build APK
-        run: |
-          cd mobile
-          ln -s ../src .
-          buildozer -v android debug
+          command: cd mobile && ln -s ../src . && buildozer -v android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
